@@ -12,7 +12,7 @@ import sys
 
 ## Define Functions & Initialization Errors
 
-# Objects
+# Functions
 def force(k, x):                    # Calculates restoring force
 	f = -k * x
 	return f
@@ -32,7 +32,7 @@ if len(sys.argv) != 4:
 	sys.exit(0)
 
 
-## Main Code 
+## Main Code
 
 # Parse Input
 nsteps = int(sys.argv[1])   # Number of steps
