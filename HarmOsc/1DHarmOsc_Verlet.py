@@ -56,8 +56,8 @@ f = force(k, x)             # Force initialization
 print('{0:^8s}  {1:^8s}    {2:^8s}  {3:^8s}'.\
           format('Time', 'Position', 'Velocity', 'Energy'))
 print("==========================================")
-print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:^8s}'.\
-              format(0, x, v, '-'))
+print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:8.2e}'.\
+              format(0, x, v, energy(k, x, m, v)))
 
 # Use Euler Algorithm for First Step
 nx = x + v*dt + (0.5*f/m)*(dt**2)   # Position at next time step
