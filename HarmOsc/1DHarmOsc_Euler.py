@@ -57,7 +57,7 @@ print('{0:^8s}  {1:^8s}    {2:^8s}  {3:^8s}'.\
           format('Time', 'Position', 'Velocity', 'Energy'))
 print("==========================================")
 print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:^8s}'.\
-              format(0, x, m*v, '-'))
+              format(0, x, v, '-'))
 
 # Main Loop
 for i in range(nsteps):
@@ -69,7 +69,7 @@ for i in range(nsteps):
 	# Print Formatted Output
 	if (i+1)%nprint == 0:
 		print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:8.2e}'.\
-			format((i+1)*dt, nx, m*nv, E))
+			format((i+1)*dt, nx, nv, E))
 
 	# Update Variables
 	x = nx
