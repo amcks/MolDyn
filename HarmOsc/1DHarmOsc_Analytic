@@ -45,10 +45,6 @@ v0 = 1.0                                 # initial velocity
 w = math.sqrt(k/m)                       # Angular frequency
 A = x0**2 + (v0/w)**2                    # Amplitude
 ph = math.atan(x0*w/v0)                  # Phase shift
-t = [i*dt for i in range(0, nsteps+1)]   # Time intervals
-
-# Initialize Position, Velocity, Momentum, and Energy Arrays
-x, v, p, E = ([] for j in range(4))
 
 # Prepare Formatted Print Output
 print('{0:^8s}  {1:^8s}    {2:^8s}  {3:^8s}'.\
@@ -56,14 +52,12 @@ print('{0:^8s}  {1:^8s}    {2:^8s}  {3:^8s}'.\
 print("==========================================")
 
 # Calculate & Update Arrays
-for l in range(len(t)):
-	x.append(A*math.sin(w*t[l]+ph))      # Position
-	v.append(A*w*math.cos(w*t[l]+ph))    # Velocity
-	p.append(m*v[l])                     # Momentum
-	E.append(energy(k, x[l], m, v[l]))   # System total energy
+for l in range(nsteps+1):
+	x = A*math.sin(w*l*dt+ph)      # Position
+	v = A*w*math.cos(w*l*dt+ph)    # Velocity
+	E = energy(k, x, m, v)   # System total energy
 	
 	# Print Formatted Output
 	if (l)%nprint == 0:
 		print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:^8.2e}'.\
-              format(t[l], x[l], v[l], E[l]))
-
+              format(l*dt, x, v, E))
