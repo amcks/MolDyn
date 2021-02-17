@@ -57,7 +57,7 @@ print('{0:^8s}  {1:^8s}    {2:^8s}  {3:^8s}'.\
           format('Time', 'Position', 'Velocity', 'Energy'))
 print("==========================================")
 print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:^8s}'.\
-              format(0, x, m*v, '-'))
+              format(0, x, v, '-'))
 
 # Use Euler Algorithm for First Step
 nx = x + v*dt + (0.5*f/m)*(dt**2)   # Position at next time step
@@ -68,7 +68,7 @@ E = energy(k, nx, m, nv)            # Energy at next time step
 # Print Formatted Output
 if (1)%nprint == 0:
 	print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:8.2e}'.\
-		format(dt, nx, m*nv, E))
+		format(dt, nx, nv, E))
 
 
 # Main Loop for Verlet Algorithm for Second Step Onwards
@@ -81,7 +81,7 @@ for i in range(nsteps-1):
 	# Print Formatted Output
 	if (i+2)%nprint == 0:
 		print('{0:^8.2f}  {1:+8.2e}  {2:+8.2e}  {3:8.2e}'.\
-			format((i+2)*dt, nnx, m*nnv, E))
+			format((i+2)*dt, nnx, nnv, E))
 
 	# Update Variables
 	x = nx
