@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Wed Feb 17 15:15:10 2021
 
@@ -25,7 +24,7 @@ def energy(k, x, m, v):             # Calculates system energy
 	e = 0.5*k*(x**2) + 0.5*m*(v**2)
 	return e
 
-def animation_frame(i):                      # Function for animation
+def animation_frame(i):                          # Function for animation
 	x_A_anim.append(x_A[i])                  # Analytical position
 	p_A_anim.append(p_A[i])                  # Analytical momentum
 	
@@ -141,7 +140,7 @@ animation = anim.FuncAnimation(fig, func=animation_frame,
 						   frames=np.arange(0,nsteps,1), interval=100)
 
 # Show Plot
-# plt.show()
+plt.show()
 
 # Save Movie
-animation.save('Phase_Evol.gif', writer=writer)
+# animation.save('Phase_Evol.gif', writer=writer)
