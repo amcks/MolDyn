@@ -106,11 +106,11 @@ E_V = E_E[0:2]
 
 # Main Verlet Loop
 for i in range(nsteps-1):
-	x_V.append(2*x_V[i+1] - x_V[i] + f_V[i+1]/m*(dt**2))   # Position
-	f_V.append(force(k, x_V[-1]))                          # Force
-	v_V.append(v_V[i+1] + dt/(2*m)*(f_V[i+1] + f_V[-1]))   # Velocity
-	p_V.append(m*v_V[-1])                                  # Momentum
-	E_V.append(energy(k, x_V[-1], m, v_V[-1]))             # Energy
+	x_V.append(x_V[i+1] + v_V[i]*dt + f_V[i+1]/(2*m)*(dt**2))   # Position
+	f_V.append(force(k, x_V[-1]))                               # Force
+	v_V.append(v_V[i+1] + dt/(2*m)*(f_V[i+1] + f_V[-1]))        # Velocity
+	p_V.append(m*v_V[-1])                                       # Momentum
+	E_V.append(energy(k, x_V[-1], m, v_V[-1]))                  # Energy
 
 
 
