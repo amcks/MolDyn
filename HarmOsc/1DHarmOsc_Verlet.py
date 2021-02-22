@@ -73,10 +73,10 @@ if (1)%nprint == 0:
 
 # Main Loop for Verlet Algorithm for Second Step Onwards
 for i in range(nsteps-1):
-	nnx = 2*nx - x + nf/m*(dt**2)   # Position at next time step
-	nnf = force(k, nnx)             # Force at next time step
-	nnv = nv + dt/(2*m)*(nf + nnf)  # Velocity at next time step
-	E = energy(k, nnx, m, nnv)      # Energy at next time step
+	nnx = nx + nv*dt + nf/(2*m)*(dt**2)   # Position at next time step
+	nnf = force(k, nnx)                   # Force at next time step
+	nnv = nv + dt/(2*m)*(nf + nnf)        # Velocity at next time step
+	E = energy(k, nnx, m, nnv)            # Energy at next time step
 
 	# Print Formatted Output
 	if (i+2)%nprint == 0:
@@ -84,9 +84,6 @@ for i in range(nsteps-1):
 			format((i+2)*dt, nnx, nnv, E))
 
 	# Update Variables
-	x = nx
-	v = nv
-	f = nf
 	nx = nnx
 	nv = nnv
 	nf = nnf
